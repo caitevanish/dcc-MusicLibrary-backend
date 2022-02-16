@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 #used within endpoint class-based view methods:
 from .models import Song 
@@ -28,6 +29,35 @@ class SongList(APIView):
       return Response(serializer.data, status=status.HTTP_201_CREATED) #return serializer.data in response object, specify 201 code
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
   #before testing API in postman set up app's URLs!
+
+class SongDetail(APIView):
+#get by id
+  def get_song(self, pk):
+    try:
+      return Song.objects.get(pk=pk)
+    except Song.DoesNotExist:
+      raise Http404
+
+  def get(self, request, pk):
+    song = self.get_song(pk)
+    serializer = SongSerializer(song)
+    return Response(serializer.data)
+
+ #update
+  def put(self,request, pk):
+    song = self.get_song(pk)
+    serializer = SongSerializer(song, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# #delete
+  def delete(self, request, pk):
+    song = self.get_song(pk)
+    song.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
     
 
