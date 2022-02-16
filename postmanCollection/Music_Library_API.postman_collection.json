@@ -90,7 +90,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/music/3/",
+					"raw": "http://127.0.0.1:8000/music/8/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -101,7 +101,7 @@
 					"port": "8000",
 					"path": [
 						"music",
-						"3",
+						"8",
 						""
 					]
 				}
@@ -123,7 +123,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/music/3/",
+					"raw": "http://127.0.0.1:8000/music/8/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -134,7 +134,7 @@
 					"port": "8000",
 					"path": [
 						"music",
-						"3",
+						"8",
 						""
 					]
 				}
