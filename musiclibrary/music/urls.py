@@ -6,7 +6,7 @@ from . import views #importing views.py so we can register our class-based views
 
 urlpatterns = [
   path('music/', views.SongList.as_view()), #as_view calling underlying method inside APIView that class-based views inherit from
-  path('music/<int:pk>/', views.SongDetail.as_view())
+  path('music/<int:id>/', views.SongDetail.as_view())
   # path('music/<int:pk>/update/', views.SongDetail.as_view())
 ]
 
